@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project default="run" basedir="." name="compile and run Java class">
+
+	<target name="delete">
+	    <echo>deleting Directory staging ..</echo>
+		<delete dir="staging" />
+	</target>
+	
+    <target name="create" depends="delete">
+        <echo>creating Directory staging ..</echo>
+    	<mkdir dir="staging" /> 
+    </target>
+    
+    <target name="compile" depends="create">
+		<echo>Compiling ..</echo>
+		<javac srcdir="./src" destdir="staging" />
+	</target>
+	
+	<target name="run" depends="compile">
+	    <echo>Running ..</echo>
+		<java classname="org.islam.ant.Demo">
+			<classpath path="staging" />
+		</java>
+	</target>
+
+	
+	
+</project>
